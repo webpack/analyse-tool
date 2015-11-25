@@ -6,10 +6,10 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint app scripts test lib",
-    "beautify-lint": "node ./scripts/beautify-check",
+    "beautify-lint": "beautify-lint lib/**.js app/**.js test/**.js",
     "test": "npm run lint && npm run beautify-lint",
     "travis": "npm test",
-    "beautify": "node ./scripts/beautify-rewrite"
+    "beautify": "beautify-rewrite lib/**.js app/**.js test/**.js"
   },
   "repository": {
     "type": "git",
@@ -45,6 +45,7 @@
   "devDependencies": {
     "async": "^1.5.0",
     "babel-eslint": "^4.1.5",
+    "beautify-lint": "^1.0.4",
     "diff": "^2.2.1",
     "eslint": "^1.9.0",
     "eslint-plugin-babel": "^2.1.1",
