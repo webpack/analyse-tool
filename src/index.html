@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  {% for (var chunk in o.htmlWebpackPlugin.files.css) { %}
+  <link rel="stylesheet" type="text/css" href="/{%= o.htmlWebpackPlugin.files.css[chunk] %}"/>
+  {% } %}
+  <base href="/">
+</head>
+<body>
+  <div id="appRoot"></div>
+  {% for (var chunk in o.htmlWebpackPlugin.files.js) { %}
+  <script type="application/javascript" src="/{%= o.htmlWebpackPlugin.files.js[chunk] %}"></script>
+  {% } %}
+</body>
+</html>
