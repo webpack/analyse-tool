@@ -7,7 +7,7 @@
   "scripts": {
     "lint": "eslint app scripts test lib",
     "beautify-lint": "beautify-lint lib/**.js app/**.js test/**.js",
-    "test": "npm run lint && npm run beautify-lint && ./node_modules/.bin/karma start --browsers PhantomJS --single-run",
+    "test": "npm run lint && npm run beautify-lint && ./node_modules/.bin/karma start --browsers Firefox --single-run",
     "travis": "npm test",
     "beautify": "beautify-rewrite lib/**.js app/**.js test/**.js",
     "build": "npm run lint && npm run beautify-lint && ./node_modules/.bin/webpack",
