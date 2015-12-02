@@ -5,11 +5,11 @@
   "description": "A tool to analyse your webpack build result. It allows to browse the compilation and points out options to optimize the build.",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint app scripts test lib",
-    "beautify-lint": "beautify-lint lib/**.js app/**.js test/**.js",
+    "lint": "eslint src scripts test lib",
+    "beautify-lint": "beautify-lint lib/**.js src/**.js test/**.js",
     "test": "npm run lint && npm run beautify-lint && ./node_modules/.bin/karma start --browsers Firefox --single-run",
     "travis": "npm test",
-    "beautify": "beautify-rewrite lib/**.js app/**.js test/**.js",
+    "beautify": "beautify-rewrite lib/**.js src/**.js test/**.js",
     "build": "npm run lint && npm run beautify-lint && ./node_modules/.bin/webpack",
     "dev-server": "node server"
   },
@@ -52,6 +52,7 @@
     "beautify-lint": "^1.0.4",
     "diff": "^2.2.1",
     "eslint": "^1.9.0",
+    "eslint-config-airbnb": "^1.0.2",
     "eslint-plugin-babel": "^2.1.1",
     "eslint-plugin-nodeca": "^1.0.3",
     "eslint-plugin-react": "^3.8.0",
