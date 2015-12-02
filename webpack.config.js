@@ -41,19 +41,21 @@ module.exports = {
   module: {
     preLoaders: [
       {
-        test: /(\.(tsx?|jsx?|s?css|styl))$/,
+        test: /(\.(jsx?|s?css))$/,
         loader: "source-map-loader",
       }
     ],
     loaders: [
       {
         test: /(\.jsx?)$/,
-        exclude: /node_modules/,
+        include: [
+          path.join(__dirname, "./src"),
+        ],
         loader: "react-hot!babel",
       },
       {
         test: /(\.s?css)$/,
-        loader: ExtractTextPlugin.extract("style", "css-loader?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass?sourceMap=true&sourceMapContents=true!toolbox"),
+        loader: ExtractTextPlugin.extract("style", "css-loader?sourceMap&modules&importLoaders=2&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass?sourceMap=true&sourceMapContents=true"),
       },
       {
         test: /\.(eot|svg|ttf|woff2?)(\?.*)?$/,

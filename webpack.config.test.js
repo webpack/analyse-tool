@@ -12,12 +12,14 @@ module.exports = {
     loaders: [
       {
         test: /(\.jsx?)$/,
-        exclude: /node_modules/,
+        include: [
+          path.join(__dirname, "./src"),
+        ],
         loader: "babel",
       },
       {
         test: /(\.s?css)$/,
-        loader: "css-loader?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass?sourceMap=true&sourceMapContents=true",
+        loader: "css-loader?sourceMap&modules&importLoaders=2&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass?sourceMap=true&sourceMapContents=true",
         // loader: ExtractTextPlugin.extract("style", "css?sourceMap!sass?sourceMap")
       },
     ],
@@ -33,7 +35,7 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({ __DEVELOPMENT__: false, __DEVTOOLS__: false }),
     new webpack.DefinePlugin({
-      "process.env.NODE_ENV": JSON.stringify("test")
+      "process.env.NODE_ENV": JSON.stringify("test"),
     }),
   ],
 };
