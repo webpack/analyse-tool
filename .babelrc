@@ -1,6 +1,24 @@
 {
-	"presets": [
-		"es2015",
-		"react"
-	]
+  "stage": 0,
+  "optional": [
+    "runtime",
+    "es7.classProperties",
+    "es7.functionBind"
+  ],
+  "env": {
+    "development": {
+      "plugins": [ "react-transform" ],
+      "extra": {
+        "react-transform": {
+          "transforms": [
+            {
+              "transform": "react-transform-hmr",
+              "imports": [ "react" ],
+              "locals": [ "module" ]
+            }
+          ]
+        }
+      }
+    }
+  }
 }
