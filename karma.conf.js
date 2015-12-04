@@ -16,13 +16,13 @@ module.exports = function karmaConfig(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ["tap"],
+    frameworks: ["mocha"],
 
     plugins: [
       "karma-sourcemap-loader",
       "karma-webpack",
-      "karma-tap",
-      "karma-tape-reporter",
+      "karma-mocha",
+      "karma-mocha-reporter",
       "karma-firefox-launcher",
       "karma-chrome-launcher",
       "karma-phantomjs-launcher",
@@ -45,7 +45,7 @@ module.exports = function karmaConfig(config) {
     // test results reporter to use
     // possible values: "dots", "progress"
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ["progress", "tape"],
+    reporters: ["progress", "mocha"],
 
     // web server port
     port: 9876,

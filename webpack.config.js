@@ -51,7 +51,7 @@ module.exports = {
         include: [
           path.join(__dirname, "./src"),
         ],
-        loader: "react-hot!babel",
+        loader: "babel",
       },
       {
         test: /(\.s?css)$/,
