@@ -5,13 +5,13 @@
   "description": "A tool to analyse your webpack build result. It allows to browse the compilation and points out options to optimize the build.",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint src scripts test lib",
-    "beautify-lint": "beautify-lint lib/**.js src/**.js test/**.js",
-    "test": "npm run lint && npm run beautify-lint && ./node_modules/.bin/karma start --browsers Firefox --single-run",
-    "travis": "npm test",
-    "beautify": "beautify-rewrite lib/**.js src/**.js test/**.js",
-    "build": "npm run lint && npm run beautify-lint && ./node_modules/.bin/webpack",
-    "dev-server": "node server"
+    "lint": "eslint src test",
+    "beautify-lint": "beautify-lint src/**.js test/**.js",
+    "test": "npm run lint && cross-env NODE_ENV=test karma start --single-run",
+    "travis": "karma start --browsers Firefox --single-run",
+    "beautify": "beautify-rewrite src/**.js test/**.js",
+    "build": "npm run lint && npm run beautify-lint && cross-env NODE_ENV=production webpack",
+    "dev-server": "cross-env NODE_ENV=development node server"
   },
   "repository": {
     "type": "git",
