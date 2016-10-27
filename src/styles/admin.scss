@@ -1,0 +1,24 @@
+@import 'base';
+
+#content {
+  margin-top: 1rem;
+}
+
+.box {
+  background-color: white;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.02);
+  border: 1px solid #DBDBDC;
+  border-radius: 3px;
+  min-height: 20px;
+}
+
+.box-title {
+  margin: 0;
+  border-bottom: 1px solid black;
+  font-size: 15px;
+  padding: 0 15px;
+  color: #4b4f5d;
+  border-bottom-color: #f2f2f2;
+  font-size: 15px;
+  line-height: 48px;
+}
