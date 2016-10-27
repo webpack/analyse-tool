@@ -1,0 +1,64 @@
+/* @flow */
+
+import debug from 'debug';
+import React, { PropTypes, Component, Element } from 'react';
+import { FormattedMessage } from 'react-intl';
+import { autobind } from 'core-decorators';
+import { connect } from 'react-redux';
+import type { User } from '../../declarations/app';
+import ProfileEditForm from '../../containers/ProfileEditForm/ProfileEditForm';
+import { updateUser } from '../../redux/modules/user/user-actions';
+import { messages } from './ProfileEditPage.i18n';
+import {
+  updateDocumentTitle,
+  resetDocumentTitle,
+} from '../../redux/modules/document-title/document-title';
+
+if (__DEBUG__) {
+  debug.enable('profile-edit-page:*');
+}
+
+const log = debug('profile-edit-page:debug');
+
+export class ProfileEditPage extends Component {
+  static displayName = 'ProfileEditPage';
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    user: PropTypes.object,
+  };
+
+  componentDidMount() {
+    this.props.dispatch(updateDocumentTitle(messages.title));
+  }
+
+  componentWillUnmount() {
+    this.props.dispatch(resetDocumentTitle());
+  }
+
+  @autobind
+  handleUpdate(user: User) {
+    log('handleUpdate(): user:', user);
+    this.props.dispatch(updateUser(user));
+  }
+
+  render(): Element<any> {
+    return (
+      <div className="content container">
+        <h2 className="box-title">
+          <FormattedMessage { ...messages.title } />
+        </h2>
+
+        <div className="box-content">
+          <ProfileEditForm user={ this.props.user } handleUpdate={ this.handleUpdate } />
+        </div>
+
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
+
+export default connect(mapStateToProps)(ProfileEditPage);

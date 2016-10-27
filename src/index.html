@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+  <title>r3analyse</title>
+  <base href="/" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="/favicon.png" />
+
+  <!-- Boostrap v3 -->
+  <link rel="stylesheet" href="/css/bootstrap-v3.3.7.min.css">
+</head>
+<body>
+  <div id="root" style="height: 100%"></div>
+
+  <!-- Load Google fonts asynchronously ()-->
+  <script type="text/javascript">
+    WebFontConfig = {
+      google: { families: [ 'Open+Sans::latin,latin-ext' ] }
+    };
+    (function() {
+      var wf = document.createElement('script');
+      wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+        '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+      wf.type = 'text/javascript';
+      wf.async = 'true';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(wf, s);
+    })();
+  </script>
+</body>
+</html>

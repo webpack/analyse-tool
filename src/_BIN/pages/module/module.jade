@@ -1,0 +1,107 @@
+.container-fluid
+  .row
+    .col-md-6: .well
+      table(width="100%"): tbody: tr
+        td: a.btn.btn-success.disabled(href="#module/#{module.uid}")= module.id
+        td: pre: code= module.name.split("!").join("\n")
+    .col-md-3: .well
+      h4 time
+      if module.time
+        code= module.time + "ms"
+        if module.timestamp
+          = " finished @ "
+          code= module.timestamp + "ms"
+      else
+        | Compile with <code>--profile</code>.
+    .col-md-3: .well
+      h4 size
+      = require("../../formatSize")(module.size)
+  .row
+    .col-md-3: .well
+      h4 flags
+      if module.built
+        span.label.label-success built
+        = " "
+      if !module.cacheable
+        span.label.label-warning not cacheable
+        = " "
+      if module.prefetched
+        span.label.label-success prefetched
+        = " "
+      if module.failed
+        span.label.label-danger failed
+        = " "
+      if module.warnings
+        span.label.label-warning= module.warnings + " warnings"
+        = " "
+      if module.errors
+        span.label.label-danger= module.errors + " errors"
+    .col-md-3: .well
+      h4 chunks
+      each chunk in module.chunks
+        a.btn.btn-info(href="#chunk/#{chunk}")= chunk
+    .col-md-6: .well
+      if issuer
+        h4 issuer
+        table(width="100%"): tbody: tr
+          td
+            if typeof issuer.uid === "number"
+              a.btn.btn-success(href="#module/#{issuer.uid}")= issuer.id
+            else
+              span.btn.btn-success= issuer.id
+          td: pre: code= issuer.name.split("!").join("\n")
+  .row
+    .col-md-12: .well
+      h4 reasons
+      table.table.table-condensed
+        thead
+          tr
+            th type
+            th(colspan=2) module
+            th user request
+            th location
+        tbody
+          each reason in module.reasons
+            tr
+              td= reason.type
+              td(style="width: 1px")
+                if typeof reason.moduleUid === "number"
+                  a.btn.btn-success(href="#module/#{reason.moduleUid}")= reason.moduleId
+                else
+                  span.btn.btn-success= reason.moduleId
+              td: if reason.module
+                pre: code= reason.module.split("!").join("\n")
+              td: if reason.userRequest
+                pre: code= reason.userRequest.split("!").join("\n")
+              td
+                if reason.loc
+                  code= reason.loc
+  .row
+    .col-md-12: .well
+      h4 dependencies
+      table.table
+        thead
+          tr
+            th type
+            th(colspan=2) module
+            th user request
+            th location
+        tbody
+          each dependency in module.dependencies
+            tr
+              td= dependency.type
+              td(style="width: 1px")
+                if typeof dependency.moduleUid === "number"
+                  a.btn.btn-success(href="#module/#{dependency.moduleUid}")= dependency.moduleId
+                else
+                  span.btn.btn-success= dependency.moduleId
+              td: if dependency.module
+                pre: code= dependency.module.split("!").join("\n")
+              td: if dependency.userRequest
+                pre: code= dependency.userRequest.split("!").join("\n")
+              td
+                if dependency.loc
+                  code= dependency.loc
+  .row
+    .col-md-12
+      pre: code= module.source

@@ -1,5 +1,16 @@
 sudo: false
+
 language: node_js
+
+env:
+  - NODE_ENV=development NPM_CONFIG_PROGRESS=false
+
 node_js:
-  - node
-script: npm run travis
+  - '6.8'
+
+script:
+  - npm run travis
+
+notifications:
+  slack:
+    secure: ""

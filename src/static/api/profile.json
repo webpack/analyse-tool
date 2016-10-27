@@ -1,0 +1,19 @@
+{
+  "userId": "1",
+  "name": "Bart",
+  "givenName": "Bartek",
+  "familyName": "Kus",
+  "nickname": "Bartekus",
+  "picture": "/images/default-profile.png",
+  "email": "bartekus@gmail.com",
+  "emailVerified": true,
+  "roles": [
+    "admin"
+  ],
+  "gender": "male",
+  "age": 33,
+  "notes": "The secret of joy in work is contained in one word\n\t\t\t– excellence.\nTo know how to do something well is to enjoy it.",
+  "createdAt": "2016-01-01T00:00:00.000Z",
+  "updatedAt": "2016-01-01T00:00:00.000Z",
+  "locale": "en-CA"
+}
