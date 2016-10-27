@@ -9,7 +9,7 @@
     "npm": "^3.0.0"
   },
   "scripts": {
-    "build": "npm run dist:clean && npm run copy:static && npm run compile && npm run deploy",
+    "build": "npm run dist:clean && npm run copy:static && npm run compile",
     "dist:clean": "rm -rf dist && mkdir dist",
     "copy:static": "cp -r src/static/* dist",
     "compile": "NODE_ENV=production webpack -p --bail",
@@ -19,10 +19,8 @@
     "lint": "eslint . ./",
     "start": "npm run dev",
     "start:bs": "npm run dev:bs",
-    "beautify-lint": "beautify-lint lib/**.js app/**.js test/**.js",
-    "test": "npm run lint && npm run beautify-lint",
-    "travis": "npm test",
-    "beautify": "beautify-rewrite lib/**.js app/**.js test/**.js"
+    "test": "npm run lint && npm run flow",
+    "travis": "npm test"
   },
   "repository": {
     "type": "git",
